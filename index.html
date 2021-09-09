@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <link href="style.css" rel="stylesheet">
+    <audio id="audio" controls autoplay loop>
+        <source src="./audio/Kraid.mp3">
+    </audio>
 </head>
 <body>
 
+    
+
     <h1>Snake Game using JavaScript <br>
-    <em>por Caio Souza<em></h1>
+    por Caio Souza, programador Jr.</h1>
     
     <canvas id="stage" width="400" height="400"></canvas>
     <script type="text/javascript">
@@ -56,10 +61,10 @@
             ctx.fillStyle = "black";
             ctx.fillRect(0,0, stage.width, stage.height);
 
-            ctx.fillStyle = "red";
+            ctx.fillStyle = "rgb(151, 38, 185)";
             ctx.fillRect(ax*tp, ay*tp, tp,tp)
 
-            ctx.fillStyle = "gray";
+            ctx.fillStyle = "rgb(113, 161, 125)";
             for (var i = 0; i < trail.length; i++){
                 ctx.fillRect(trail[i].x*tp, trail[i].y*tp, tp,tp);
                 if (trail[i].x == px && trail[i].y == py)
@@ -113,7 +118,19 @@
 
         }
     
-    </script>
+    </script> <br><br><br>
+    
+ 
 
 </body>
+
+<div id="rodape">
+    
+
+    <h3>Projeto de uma página contendo o jogo da cobrinha<br>
+        Meu perfil no GitHub: <a href="https://github.com/manoCaioZ">GitHub</a>
+    </h3>
+
+</div>
+
 </html>
