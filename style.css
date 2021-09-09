@@ -14,7 +14,10 @@ body {
     background-color: rgb(113, 161, 125);
 }
 
-
+img {
+    width: 100px;
+    margin-right: 500px;
+}
 
 
 
