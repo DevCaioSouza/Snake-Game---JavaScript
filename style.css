@@ -1,9 +1,10 @@
 body {
-    background-color: rgb(103, 103, 218);
+    background: linear-gradient(90deg, rgba(103,103,218,1) 43%, rgba(108,129,176,1) 64%, rgba(113,161,125,1) 100%, rgba(0,212,255,1) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family:monospace;
+    overflow: hidden;
     
 }
 
