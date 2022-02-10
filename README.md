@@ -3,7 +3,8 @@ These games made using JavaScript are good for practicing programming logic and 
 
 
 Here's a GIF of the project: <br>
-![ezgif com-gif-maker (14)](https://user-images.githubusercontent.com/84105396/153328826-a6ed612a-8163-4fee-8a36-3b3c807e42d4.gif)
+
+![ezgif com-gif-maker (15)](https://user-images.githubusercontent.com/84105396/153328943-bbf4b1c4-472b-4333-830b-32e370edd8b0.gif)
 
 And here you can access the hosted website on Netlify and play it. https://snakegamejs1.netlify.app 
 
