@@ -1,144 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake Game</title>
-    <link href="style.css" rel="stylesheet">
-    <audio id="audio" controls autoplay loop>
-        <source src="./audio/Kraid.mp3">
-    </audio>
-</head>
-<body>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="audio-panel">
+      <h1>Painel de áudio</h1>
+      <audio id="audio" controls autoplay loop>
+        <source src="./audio/Kraid.mp3" />
+      </audio>
+    </div>
 
-    
+    <div class="intro">
+      <h1>Seja bem vindo <3</h1>
+    </div>
 
-    <h1><br></h1>
-    
     <canvas id="stage" width="400" height="400"></canvas>
     <script type="text/javascript">
-    
-        window.onload = function (){
-            var stage  =document.getElementById('stage') ; 
-            var ctx = stage.getContext("2d");
-            document.addEventListener("keydown", keyPush);
-            setInterval(game, 60);
+      window.onload = function () {
+        let stage = document.getElementById('stage');
+        let ctx = stage.getContext('2d');
+        document.addEventListener('keydown', keyPush);
+        setInterval(game, 60);
 
-            const vel = 1;
+        const vel = 1;
 
-            var vx = vy = 0;
-            var px = py = 10;
-            var py = 15;
-            var tp = 20;
-            var qp = 20;
-            var ax = ay = 15;
+        let vx = (vy = 0);
+        let px = (py = 10);
+        var py = 15;
+        var tp = 20;
+        var qp = 20;
+        var ax = (ay = 15);
 
+        let trail = [];
+        tail = 5;
 
-            var trail = [];
-            tail = 5;
+        function game() {
+          px += vx;
+          py += vy;
+          if (px < 0) {
+            px = qp - 1;
+          }
+          if (px > qp - 1) {
+            px = 0;
+          }
+          if (py < 0) {
+            py = qp - 1;
+          }
+          if (py > qp - 1) {
+            py = 0;
+          }
 
+          ctx.fillStyle = 'black';
+          ctx.fillRect(0, 0, stage.width, stage.height);
 
+          ctx.fillStyle = 'rgb(151, 38, 185)';
+          ctx.fillRect(ax * tp, ay * tp, tp, tp);
 
-            function game(){
-                px += vx;
-                py += vy;
-                if (px < 0){
-                    px = qp-1;
-                }
-                if (px > qp-1){
-                    px=0 ;
-                }
-                if (py < 0){
-                    py = qp-1;
-                }
-                if(py > qp-1){
-                    py = 0;
-                }
-
-
-            ctx.fillStyle = "black";
-            ctx.fillRect(0,0, stage.width, stage.height);
-
-            ctx.fillStyle = "rgb(151, 38, 185)";
-            ctx.fillRect(ax*tp, ay*tp, tp,tp)
-
-            ctx.fillStyle = "rgb(113, 161, 125)";
-            for (var i = 0; i < trail.length; i++){
-                ctx.fillRect(trail[i].x*tp, trail[i].y*tp, tp,tp);
-                if (trail[i].x == px && trail[i].y == py)
-                {
-                    vx = vy=0;
-                    tail = 5;
-                }
+          ctx.fillStyle = 'rgb(113, 161, 125)';
+          for (let i = 0; i < trail.length; i++) {
+            ctx.fillRect(trail[i].x * tp, trail[i].y * tp, tp, tp);
+            if (trail[i].x == px && trail[i].y == py) {
+              vx = vy = 0;
+              tail = 5;
             }
+          }
 
-            trail.push({x:px, y:py})
-            while (trail.length > tail) {
-                trail.shift();
-            }
+          trail.push({ x: px, y: py });
+          while (trail.length > tail) {
+            trail.shift();
+          }
 
-            if (ax==px && ay==py){
-                tail++;
-                ax = Math.floor(Math.random()*qp);
-                ay = Math.floor(Math.random()*qp);
-            }
-
+          if (ax == px && ay == py) {
+            tail++;
+            ax = Math.floor(Math.random() * qp);
+            ay = Math.floor(Math.random() * qp);
+          }
         }
 
-        function keyPush(event){
-
-            switch(event.keyCode){
-                case 37: // left
-                    vx = -vel;
-                    vy = 0;
-                    break;
-                case 38: // up
-                    vx = 0;
-                    vy = -vel;
-                    break;
-                case 39: // right
-                    vx = vel;
-                    vy = 0;
-                    break;
-                case 40: // down
-                    vx = 0;
-                    vy = vel;
-                    break;   
-                default:    
-
-                    break;
-
-            }
-
-
+        function keyPush(event) {
+          switch (event.keyCode) {
+            case 37: // left
+              vx = -vel;
+              vy = 0;
+              break;
+            case 38: // up
+              vx = 0;
+              vy = -vel;
+              break;
+            case 39: // right
+              vx = vel;
+              vy = 0;
+              break;
+            case 40: // down
+              vx = 0;
+              vy = vel;
+              break;
+            default:
+              break;
+          }
         }
-
-
-        }
-    
-    </script> <br>
-    <h3>Como jogar: Controle a cobrinha usando as teclas direcionais<br>
-    Caso tenha clicado no player de audio, clique fora novamente para jogar</h3>
-    <img src="./images/2.jpg" alt="Pixel Cobra" id="pixelCobra">
-    
-    <br>
-
-</body>
-
-
-    
-
-
-<div id="rodape">
-    
-
-    <h3>Projeto de uma página contendo o jogo da cobrinha<br>
-        Meu perfil no GitHub: <a href="https://github.com/manoCaioZ">GitHub</a>
+      };
+    </script>
+    <br />
+    <h3>
+      Obs: Disponível para WEB apenas <br>
+      Como jogar: Controle a cobrinha usando as teclas direcionais<br />
+      Caso tenha clicado no player de audio, clique fora novamente para jogar
     </h3>
+    <img src="./images/2.jpg" alt="Pixel Cobra" id="pixelCobra" />
 
-</div>
+    <br />
+  </body>
 
+  <div id="rodape">
+    <h3>
+      Projeto de uma página contendo o jogo da cobrinha<br />
+      Meu perfil no GitHub: <a href="https://github.com/DevCaioSouza" target="_blank">GitHub</a>
+    </h3>
+  </div>
 </html>
 
 <!-- Falta adicionar:
