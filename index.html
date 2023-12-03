@@ -104,11 +104,29 @@
               break;
           }
         }
+
+        window.addEventListener(
+          'keydown',
+          function (e) {
+            if (
+              [
+                'Space',
+                'ArrowUp',
+                'ArrowDown',
+                'ArrowLeft',
+                'ArrowRight',
+              ].indexOf(e.code) > -1
+            ) {
+              e.preventDefault();
+            }
+          },
+          false
+        );
       };
     </script>
     <br />
     <h3>
-      Obs: Disponível para WEB apenas <br>
+      Obs: Disponível para WEB apenas <br />
       Como jogar: Controle a cobrinha usando as teclas direcionais<br />
       Caso tenha clicado no player de audio, clique fora novamente para jogar
     </h3>
@@ -120,7 +138,8 @@
   <div id="rodape">
     <h3>
       Projeto de uma página contendo o jogo da cobrinha<br />
-      Meu perfil no GitHub: <a href="https://github.com/DevCaioSouza" target="_blank">GitHub</a>
+      Meu perfil no GitHub:
+      <a href="https://github.com/DevCaioSouza" target="_blank">GitHub</a>
     </h3>
   </div>
 </html>
